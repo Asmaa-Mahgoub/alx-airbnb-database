@@ -35,7 +35,7 @@ booking_id: Foreign Key, references Booking(booking_id)
 amount: DECIMAL, NOT NULL  
 payment_date: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP  
 payment_method: ENUM (credit_card, paypal, stripe), NOT NULL  
-- **review**: 
+- **review**:  
 review_id: Primary Key, UUID, Indexed  
 property_id: Foreign Key, references Property(property_id)  
 user_id: Foreign Key, references User(user_id)  
