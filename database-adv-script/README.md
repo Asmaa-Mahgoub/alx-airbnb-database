@@ -50,3 +50,29 @@ SELECT
 FROM users
 FULL OUTER JOIN bookings 
     ON users.user_id = bookings.user_id;
+
+# 🧠 SQL Subqueries: Correlated vs. Non-Correlated
+
+This exercise demonstrates how to write **non-correlated** and **correlated** subqueries in SQL using a property booking database.
+
+---
+
+## 🏘️ Non-Correlated Subquery
+
+### 🎯 Goal
+Find all **properties** where the **average rating** is greater than `4.0`.
+
+### 💡 Explanation
+A **non-correlated subquery** runs **independently** of the outer query.  
+It first produces a list of property IDs that meet the condition, and then the outer query uses that result.
+
+### 🧩 Query
+```sql
+SELECT property_name
+FROM properties
+WHERE property_id IN (
+    SELECT property_id
+    FROM reviews
+    GROUP BY property_id
+    HAVING AVG(rating) > 4.0
+);
