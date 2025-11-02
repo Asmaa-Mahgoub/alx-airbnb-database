@@ -20,5 +20,8 @@ CREATE INDEX idx_property_price ON property(pricepernight);
 CREATE INDEX idx_booking_user_id ON Booking(user_id);
 CREATE INDEX idx_booking_property_id ON Booking(property_id);
 
+EXPLAIN ANALYZE SELECT * 
+FROM Booking 
+WHERE status = 'confirmed' AND start_date > '2025-11-01';
 
 
