@@ -9,7 +9,7 @@ SELECT p.property_id, p.name, p.description, r.review_id, r.rating, r.comment
 FROM
 property p
 LEFT JOIN
-review r ON p.property_id=r.property_id;
+review r ON p.property_id=r.property_id ORDER BY property_id ASC;
  
 SELECT u.user_id, u.first_name, u.last_name, b. booking_id  
 FROM
