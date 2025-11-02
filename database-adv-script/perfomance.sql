@@ -13,6 +13,8 @@ FROM booking b
 JOIN user u ON b.user_id = u.user_id
 JOIN property p ON b.property_id = p.property_id
 LEFT JOIN payment pay ON b.booking_id = pay.booking_id;
+WHERE p.location = 'Miami' 
+AND pay.amount > 1000;
 
 --Measure Actual Execution Time
 EXPLAIN ANALYZE
@@ -29,7 +31,9 @@ SELECT
 FROM booking b
 JOIN user u ON b.user_id = u.user_id
 JOIN property p ON b.property_id = p.property_id
-LEFT JOIN payment pay ON b.booking_id = pay.booking_id;
+LEFT JOIN payment pay ON b.booking_id = pay.booking_id
+WHERE p.location = 'Miami' 
+AND pay.amount > 1000;
 
 --Refactored & Optimized Query
 CREATE INDEX idx_booking_user_id ON booking(user_id);
@@ -46,7 +50,9 @@ SELECT
     p.location
 FROM booking b
 JOIN user u ON b.user_id = u.user_id
-JOIN property p ON b.property_id = p.property_id;
+JOIN property p ON b.property_id = p.property_id
+WHERE p.location = 'Miami'
+AND b.start_date >= '2025-01-01';
 
 --Re-analyze performance
 EXPLAIN ANALYZE
@@ -60,7 +66,8 @@ SELECT
 FROM booking b
 JOIN user u ON b.user_id = u.user_id
 JOIN property p ON b.property_id = p.property_id;
-
+WHERE p.location = 'Miami'
+AND b.start_date >= '2025-01-01';
 
 
 
